@@ -6,8 +6,8 @@ import 'package:flutter/rendering.dart';
 
 enum MyLayoutId { base }
 
-class YtMultiChildObject extends MultiChildRenderObjectWidget {
-  YtMultiChildObject({
+class CommentTreeWidget extends MultiChildRenderObjectWidget {
+  CommentTreeWidget({
     super.key,
     required Widget parent,
     List<Widget> children = const <Widget>[],
@@ -21,7 +21,7 @@ class YtMultiChildObject extends MultiChildRenderObjectWidget {
 
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return YtMultiChildObjectRenderObject();
+    return _CommentTreeRenderObject();
   }
 
   @override
@@ -33,7 +33,7 @@ class YtMultiChildObject extends MultiChildRenderObjectWidget {
   }
 }
 
-class YtMultiChildObjectRenderObject extends RenderBox
+class _CommentTreeRenderObject extends RenderBox
     with ContainerRenderObjectMixin<RenderBox, MultiChildLayoutParentData> {
   @override
   void setupParentData(RenderObject child) {
