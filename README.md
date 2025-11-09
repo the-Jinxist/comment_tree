@@ -46,4 +46,4 @@ CommentTreeWidget(
 
 Which would look like this:
 
-[![screen](https://raw.githubusercontent.com/the-Jinxist/youtube_comment_tree/main/media/tree_example.png)](https://github.com/the-Jinxist/youtube_comment_tree.git)
+[![screen](https://raw.githubusercontent.com/the-Jinxist/comment_tree/main/media/tree_example.png)](https://github.com/the-Jinxist/comment_tree.git)
