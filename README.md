@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
-# Comment Tree Package
+# Youtube Comment Tree Package
 
 A package that provides a widget used to replicate the comment tree view in the new youtube app
 
@@ -30,9 +30,16 @@ dependencies:
 
 ## Usage
 
+First import:
+
+```dart
+import 'package:youtube_comment_tree/youtube_comment_tree.dart';
+
+```
+
 ```dart
 
-CommentTreeWidget(
+YoutubeCommentTreeWidget(
     treeColor: Theme.of(context).colorScheme.primaryContainer,
     parent: Comment(comment: subCommentText),
     children: [

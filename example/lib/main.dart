@@ -1,4 +1,4 @@
-import 'package:comment_tree/comment_tree.dart';
+import 'package:youtube_comment_tree/youtube_comment_tree.dart';
 import 'package:example/comment.dart';
 import 'package:flutter/material.dart';
 
@@ -39,14 +39,14 @@ class MyHomePage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            CommentTreeWidget(
+            YoutubeCommentTreeWidget(
               treeColor: Theme.of(context).colorScheme.primary,
               parent: const Comment(),
               children: [
                 Comment(comment: subCommentText),
                 Comment(comment: subCommentText),
                 Comment(comment: subCommentText),
-                CommentTreeWidget(
+                YoutubeCommentTreeWidget(
                   treeColor: Theme.of(context).colorScheme.primaryContainer,
                   parent: Comment(comment: subCommentText),
                   children: [

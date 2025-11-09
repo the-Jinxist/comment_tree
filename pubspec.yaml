@@ -1,4 +1,4 @@
-name: comment_tree
+name: youtube_comment_tree
 description: "A package that provides a widget used to replicate the comment tree view in the new youtube app"
 version: 0.0.1
 homepage: https://github.com/the-Jinxist/comment_tree

@@ -5,8 +5,8 @@ import 'package:flutter/rendering.dart';
 
 enum MyLayoutId { base }
 
-class CommentTreeWidget extends MultiChildRenderObjectWidget {
-  CommentTreeWidget({
+class YoutubeCommentTreeWidget extends MultiChildRenderObjectWidget {
+  YoutubeCommentTreeWidget({
     super.key,
     required Widget parent,
     this.treeColor,
