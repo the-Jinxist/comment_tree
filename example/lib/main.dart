@@ -40,12 +40,14 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           children: [
             CommentTreeWidget(
+              treeColor: Theme.of(context).colorScheme.primary,
               parent: const Comment(),
               children: [
                 Comment(comment: subCommentText),
                 Comment(comment: subCommentText),
                 Comment(comment: subCommentText),
                 CommentTreeWidget(
+                  treeColor: Theme.of(context).colorScheme.primaryContainer,
                   parent: Comment(comment: subCommentText),
                   children: [
                     Comment(comment: subCommentText),

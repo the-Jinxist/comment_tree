@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -10,6 +9,7 @@ class CommentTreeWidget extends MultiChildRenderObjectWidget {
   CommentTreeWidget({
     super.key,
     required Widget parent,
+    this.treeColor,
     List<Widget> children = const <Widget>[],
   }) : super(
          children: [
@@ -19,22 +19,40 @@ class CommentTreeWidget extends MultiChildRenderObjectWidget {
          ],
        );
 
+  final Color? treeColor;
+
   @override
   RenderObject createRenderObject(BuildContext context) {
-    return _CommentTreeRenderObject();
+    return _CommentTreeRenderObject(treeColor: treeColor);
   }
 
   @override
   void updateRenderObject(
     BuildContext context,
-    covariant RenderObject renderObject,
+    covariant _CommentTreeRenderObject renderObject,
   ) {
+    renderObject.treeColor = treeColor;
     super.updateRenderObject(context, renderObject);
   }
 }
 
 class _CommentTreeRenderObject extends RenderBox
     with ContainerRenderObjectMixin<RenderBox, MultiChildLayoutParentData> {
+  _CommentTreeRenderObject({required Color? treeColor}) {
+    _treeColor = treeColor;
+  }
+
+  late Color? _treeColor;
+
+  Color? get treeColor => _treeColor;
+  set treeColor(Color? val) {
+    if (val == _treeColor) return;
+    _treeColor = val;
+
+    markNeedsLayout();
+    markNeedsSemanticsUpdate();
+  }
+
   @override
   void setupParentData(RenderObject child) {
     if (child.parentData is! MultiChildLayoutParentData) {
@@ -68,7 +86,7 @@ class _CommentTreeRenderObject extends RenderBox
 
     // Iterate through all children
     (baseChild, otherChildren) = extractBaseAndChildBoxes();
-    assert(baseChild != null, "base child cannot be equal to null");
+    assert(baseChild != null, "base child cannot be null");
 
     double dy = 0;
     final biggestSize = constraints.biggest;
@@ -82,11 +100,7 @@ class _CommentTreeRenderObject extends RenderBox
 
     for (final child in otherChildren) {
       final parentData = child.parentData as MultiChildLayoutParentData;
-      log(" before: ${parentData.offset}");
-
-      parentData.offset = Offset(50, dy);
-
-      log(" after: ${parentData.offset}");
+      parentData.offset = Offset(30, dy);
 
       child.layout(
         constraints.tighten(
@@ -141,7 +155,7 @@ class _CommentTreeRenderObject extends RenderBox
 
     final canvas = context.canvas;
     final paintLine = Paint()
-      ..color = Colors.pink
+      ..color = treeColor ?? Colors.pink
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
 
@@ -152,7 +166,7 @@ class _CommentTreeRenderObject extends RenderBox
       path.cubicTo(
         treeParentNode.dx,
         offset.dy + 20,
-        treeParentNode.dx - 10,
+        treeParentNode.dx,
         offset.dy + 10,
         offset.dx - 10,
         offset.dy + 10,
